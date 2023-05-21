@@ -5,7 +5,7 @@ import DisplayTodos from "./components/DisplayTodos";
 
 function App() {
   return (
-    <Container className="py-3">
+    <Container >
       <AddTodo />
       <DisplayTodos />
     </Container>
