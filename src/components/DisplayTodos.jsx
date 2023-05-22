@@ -1,22 +1,10 @@
 import React, { useState } from "react";
 import { Card, Col, Container, ListGroup, Row } from "react-bootstrap";
 import DisplayCount from "./DisplayCount";
+import { connect } from "react-redux";
 
-const DisplayTodos = () => {
-  const [todos, setTodos] = useState([
-    {
-      title: "first title",
-      description: "first description",
-    },
-    {
-      title: "second title",
-      description: "second description",
-    },
-    {
-      title: "third title",
-      description: "third description",
-    },
-  ]);
+const DisplayTodos = ({ todos }) => {
+
   return (
     <Container>
       <Row>
@@ -41,4 +29,10 @@ const DisplayTodos = () => {
   );
 };
 
-export default DisplayTodos;
+const mapStateToProps = (state) => {
+  return {todos: state.todoReducer};
+}
+
+const mapDispatchToProps = (dispatch) => ({});
+
+export default connect(mapStateToProps, mapDispatchToProps) (DisplayTodos);
