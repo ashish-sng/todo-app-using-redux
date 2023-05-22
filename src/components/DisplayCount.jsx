@@ -3,7 +3,6 @@ import { Card } from "react-bootstrap";
 import { connect } from "react-redux";
 
 const DisplayCount = ({ todos }) => {
-  console.log(todos);
   return (
     <Card className="shadow-sm border border-o">
       <Card.Body>
@@ -14,7 +13,6 @@ const DisplayCount = ({ todos }) => {
 };
 
 const mapStateToProps = (state) => {
-  console.log(state);
   return { todos: state.todoReducer };
 };
 const mapDispatchToProps = (dispatch) => ({});

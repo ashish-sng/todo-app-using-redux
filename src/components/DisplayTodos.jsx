@@ -1,10 +1,10 @@
 import React from "react";
-import { Card, Col, Container, ListGroup, Row } from "react-bootstrap";
+import { Button, Card, Col, Container, ListGroup, Row } from "react-bootstrap";
 import DisplayCount from "./DisplayCount";
 import { connect } from "react-redux";
+import { deleteTodo } from "../redux/actions/todo";
 
-const DisplayTodos = ({ todos }) => {
-
+const DisplayTodos = ({ todos, deleteTodo }) => {
   return (
     <Container>
       <Row>
@@ -18,6 +18,9 @@ const DisplayTodos = ({ todos }) => {
                   <ListGroup.Item key={index}>
                     <h4>{todo.title}</h4>
                     <p>{todo.description}</p>
+                    <Button variant="danger" size="smalls" onClick={event => deleteTodo(todo.id)}>
+                      Delete
+                    </Button>
                   </ListGroup.Item>
                 ))}
               </ListGroup>
@@ -30,9 +33,13 @@ const DisplayTodos = ({ todos }) => {
 };
 
 const mapStateToProps = (state) => {
-  return {todos: state.todoReducer};
-}
+  return { todos: state.todoReducer };
+};
 
-const mapDispatchToProps = (dispatch) => ({});
+const mapDispatchToProps = (dispatch) => {
+  return {
+    deleteTodo: (id) => dispatch(deleteTodo(id)),
+  };
+};
 
-export default connect(mapStateToProps, mapDispatchToProps) (DisplayTodos);
+export default connect(mapStateToProps, mapDispatchToProps)(DisplayTodos);
