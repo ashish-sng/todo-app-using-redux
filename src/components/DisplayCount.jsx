@@ -1,14 +1,22 @@
 import React from "react";
 import { Card } from "react-bootstrap";
+import { connect } from "react-redux";
 
-const DisplayCount = () => {
+const DisplayCount = ({ todos }) => {
+  console.log(todos);
   return (
     <Card className="shadow-sm border border-o">
       <Card.Body>
-        <h4>No of Todos : 46</h4>
+        <h4>No of Todos : {todos.length} </h4>
       </Card.Body>
     </Card>
   );
 };
 
-export default DisplayCount;
+const mapStateToProps = (state) => {
+  console.log(state);
+  return { todos: state.todoReducer };
+};
+const mapDispatchToProps = (dispatch) => ({});
+
+export default connect(mapStateToProps, mapDispatchToProps)(DisplayCount);

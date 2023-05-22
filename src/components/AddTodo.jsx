@@ -14,7 +14,6 @@ const AddTodo = ({ addTodo }) => {
     e.preventDefault();
     //add todo in store
     addTodo(todo);
-    console.log("done");
     setTodo({
       title: "",
       description: "",
